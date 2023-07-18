@@ -27,15 +27,15 @@ export default function PanelOperation() {
 	const [count, setCount] = useState(100);
 	return (
 		<div className="panelOperation">
-			<div className="memoryFootprint">
-				<div className="memoryUsage">
+			<div className="flex">
+				<div className="flex-auto">
 					<p>
 						饥荒内存占用情况
 						<h3>100MB</h3>
 						虚拟内存{count}MB
 					</p>
 				</div>
-				<div className="memoryRemaining">
+				<div className="flex-auto">
 					<RingProgress {...memoryRemaining} />
 					<p>
 						内存剩余
@@ -43,7 +43,7 @@ export default function PanelOperation() {
 						总内存{count}MB
 					</p>
 				</div>
-				<div className="cpuUsage">
+				<div className="flex-auto">
 					<RingProgress {...cpuUsage} />
 					<p>
 						CPU使用
@@ -51,7 +51,7 @@ export default function PanelOperation() {
 						CPU核心数{count}MB
 					</p>
 				</div>
-				<div className="diskRemaining">
+				<div className="flex-auto">
 					<RingProgress {...diskRemaining} />
 					<p>
 						磁盘剩余
