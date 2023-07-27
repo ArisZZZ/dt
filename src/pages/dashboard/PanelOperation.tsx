@@ -1,6 +1,6 @@
 import { RingProgress } from "@ant-design/plots";
 import { useState } from "react";
-import { Switch } from "antd";
+import { Card, Col, Row, Switch } from "antd";
 import { Button } from "antd";
 export default function PanelOperation() {
 	const memoryRemaining = {
@@ -26,40 +26,24 @@ export default function PanelOperation() {
 	};
 	const [count, setCount] = useState(100);
 	return (
-		<div className="panelOperation">
-			<div className="flex">
-				<div className="flex-auto">
-					<p>
-						饥荒内存占用情况
-						<h3>100MB</h3>
-						虚拟内存{count}MB
-					</p>
-				</div>
-				<div className="flex-auto">
-					<RingProgress {...memoryRemaining} />
-					<p>
-						内存剩余
-						<h3>{count - memoryRemaining.percent}MB</h3>
-						总内存{count}MB
-					</p>
-				</div>
-				<div className="flex-auto">
-					<RingProgress {...cpuUsage} />
-					<p>
-						CPU使用
-						<h3>{count - cpuUsage.percent}MB</h3>
-						CPU核心数{count}MB
-					</p>
-				</div>
-				<div className="flex-auto">
-					<RingProgress {...diskRemaining} />
-					<p>
-						磁盘剩余
-						<h3>{count - diskRemaining.percent}MB</h3>
-						总存储{count}MB
-					</p>
-				</div>
-			</div>
+		<main className="panelOperation">
+			<Row gutter={16}>
+				<Col span={8}>
+					<Card title="内存占比" bordered={false}>
+						<RingProgress {...memoryRemaining} />
+					</Card>
+				</Col>
+				<Col span={8}>
+					<Card title="CPU占比" bordered={false}>
+						<RingProgress {...memoryRemaining} />
+					</Card>
+				</Col>
+				<Col span={8}>
+					<Card title="磁盘占比" bordered={false}>
+						<RingProgress {...memoryRemaining} />
+					</Card>
+				</Col>
+			</Row>
 			<div className="gamePanel">
 				<h3>游戏状况</h3>
 				<li>
@@ -120,6 +104,6 @@ export default function PanelOperation() {
 					</span>
 				</li>
 			</div>
-		</div>
+		</main>
 	);
 }
